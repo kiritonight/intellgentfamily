@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:rowCount="12"
+            android:columnCount="4">
+           //pm2.5
+
+            <ImageView android:src="@drawable/tab_menu_voice"  android:layout_width="100dp"/>
+            <TextView android:text="PM2.5"     android:textColor="@color/text_gray"/>
+            <TextView android:id="@+id/pm25_text" android:text="" android:textColor="@color/text_gray" />
+            <TextView android:text="单位" android:textColor="@color/text_gray" />
+
+             <View
+                 android:layout_width="match_parent"
+                 android:layout_height="20px"
+                 android:layout_alignParentBottom="true"
+                 android:background="@color/div_white"
+                 android:layout_columnSpan="4"
+                 />
+              //pm1.0
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="PM1.0" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/pm1_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            //PM10
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="PM10" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/pm10_text"   android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            //火灾
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="火灾" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/fire_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            //水灾
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="水灾" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/water_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+          //甲醛
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="甲醛" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/methanal_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            //CO
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="CO" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/co_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            // 光强
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="光强" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/light_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            //空气质量
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="空气质量"  android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/air_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            //温度
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="温度" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/temp_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            //湿度
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="湿度" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/hum_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+            //当前时间
+            <ImageView android:src="@drawable/tab_menu_voice" android:layout_width="100dp"/>
+            <TextView android:text="当前时间" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+            <TextView android:text="" android:id="@+id/time_text" android:textColor="@color/text_gray" android:layout_width="100dp"/>\
+            <TextView android:text="单位" android:textColor="@color/text_gray" android:layout_width="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/div_white"
+                android:layout_columnSpan="4"
+                />
+        </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/update_data"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/get_data" />
+
+    </LinearLayout>
+</LinearLayout>

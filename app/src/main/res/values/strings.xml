@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Family</string>
+
+    <string name="toptitle">智家</string>
+    <string name="tab_menu_home">home</string>
+    <string name="tab_menu_mode">mode</string>
+    <string name="tab_menu_safe">safe</string>
+    <string name="tab_menu_mine">mine</string>
+
+    <string name="home_data">环境数据</string>
+    <string name="nothing">未填充</string>
+    <string name="get_data">更新数据</string>
+    <string name="celebreate">庆祝</string>
+</resources>

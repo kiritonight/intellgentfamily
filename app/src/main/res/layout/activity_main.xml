@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/ly_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bg_topbar">
+        <TextView
+            android:id="@+id/txt_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/toptitle"
+            android:textColor="@color/text_topbar"
+            android:textSize="18sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/div_white"
+            />
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0"
+        android:background="#dbdbdb"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_home"
+            android:text="@string/tab_menu_home"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_mode"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_mode"
+
+            android:text="@string/tab_menu_mode"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_voice"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_voice"
+            android:text="" />
+
+        <RadioButton
+            android:id="@+id/rb_safe"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_safe"
+            android:text="@string/tab_menu_safe" />
+
+        <RadioButton
+            android:id="@+id/rb_mine"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_mine"
+            android:text="@string/tab_menu_mine" />
+    </RadioGroup>
+</LinearLayout>
+
