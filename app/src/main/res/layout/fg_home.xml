@@ -21,12 +21,12 @@
         android:scaleType="center"
         />
     <com.coderpig.family.Base.MyButton
-        android:id="@+id/myBtn1"
+        android:id="@+id/bn_home_controll"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_weight="1"
-        android:drawableLeft="@mipmap/tab_home_pressed"
-        android:text="@string/nothing"
+        android:drawableLeft="@mipmap/ic_home_controll"
+        android:text="@string/home_controll"
         android:textColor="@color/text_yellow"
         android:background="@color/bg_white"
         android:scaleType="center"

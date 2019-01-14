@@ -27,5 +27,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation("com.squareup.okhttp3:okhttp:3.12.1")//OKHTTP
     implementation 'com.github.florent37:materialtextfield:1.0.7' //浮动编辑文本
+   implementation 'com.github.navasmdc:MaterialDesign:1.5@aar' //材料设计
 
 }

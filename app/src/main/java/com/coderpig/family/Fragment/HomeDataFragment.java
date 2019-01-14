@@ -73,7 +73,7 @@ public class HomeDataFragment extends BaseFragement {
     {
         super.onCreate(savedInstanceState);
         mContext=getActivity();
-        initView();
+
         initData();
     }
     @Override

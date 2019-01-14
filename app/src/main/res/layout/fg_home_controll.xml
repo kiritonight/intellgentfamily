@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical"
+  >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/home_controll_type"
+        android:textColor="@color/text_gray"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/btn_light"
+           style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_light"
+            android:text="light"
+            ></RadioButton>
+        <RadioButton
+            android:id="@+id/btn_humidifier"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_hum"
+            android:text="humidifier"
+            ></RadioButton>
+        <RadioButton
+           android:id="@+id/btn_conditioner"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_aircon"
+            android:text="conditioner"
+            ></RadioButton>
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/home_work_type"
+        android:textColor="@color/text_gray"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/btn_on"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_on"
+            android:text="on"
+            ></RadioButton>
+        <RadioButton
+            android:id="@+id/btn_off"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_off"
+            android:text="off"
+            ></RadioButton>
+        <RadioButton
+            android:id="@+id/btn_mode"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_mode"
+            android:text="mode"
+            ></RadioButton>
+
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/home_work_time"
+        android:textColor="@color/text_gray"/>
+
+
+
+</LinearLayout>

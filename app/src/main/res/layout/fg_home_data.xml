@@ -6,7 +6,13 @@
     android:orientation="vertical"
     >
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/div_white"
+        android:layout_columnSpan="4"
+        />
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,5 +117,6 @@
         android:text="更新数据"
         android:textColor="@color/text_gray"
         android:textColorHint="@color/text_yellow"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        />
 </LinearLayout>

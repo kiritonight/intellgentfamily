@@ -18,6 +18,7 @@ public class HomeFragment extends BaseFragement {
     private static final String TAG = HomeFragment.class.getSimpleName();
     private View mainFragmentView;
 
+    private  Button homeControllBtn;
     private Button homeDataBtn;
     private String cookie="";
 @Override
@@ -25,31 +26,33 @@ public class HomeFragment extends BaseFragement {
     {
      super.onCreate(savedInstanceState);
      mContext=getActivity();
-     initView();
+
      initData();
     }
     @Override
     protected View initView() {
         Log.e(TAG, "主页页面Fragment页面被初始化了...");
         mainFragmentView = View.inflate(mContext, R.layout.fg_home, null);
+        homeControllBtn=(Button)mainFragmentView.findViewById(R.id.bn_home_controll);
+        homeControllBtn.setOnClickListener(new HomeClickListener());
         homeDataBtn=(Button)mainFragmentView.findViewById(R.id.bn_home_data);
-        homeDataBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                        switch (v.getId()) {
-                            case R.id.bn_home_data:
-                                replaceFragment(new HomeDataFragment());
-                       break;
-                       default:
-                           break;
-                        }
-                }
-
-
-        });
+        homeDataBtn.setOnClickListener(new HomeClickListener());
         return mainFragmentView;
     }
-
+    private  class HomeClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.bn_home_data:
+                    replaceFragment(new HomeDataFragment());
+                    break;
+                case R.id.bn_home_controll:
+                    replaceFragment(new HomeControllFragment());
+                default:
+                    break;
+            }
+        }
+    }
     protected void initData() {
        super.initDate();
       Bundle args=getArguments();
