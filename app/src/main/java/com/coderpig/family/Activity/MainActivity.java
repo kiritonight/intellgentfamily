@@ -2,6 +2,7 @@ package com.coderpig.family.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -10,11 +11,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Window;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.coderpig.family.Base.BaseFragement;
 
-import com.coderpig.family.Fragment.HomeFragment;
+import com.coderpig.family.Fragment.Home.HomeFragment;
 import com.coderpig.family.Fragment.MineFragment;
 import com.coderpig.family.Fragment.ModeFragment;
 import com.coderpig.family.Fragment.SafeFragment;
@@ -25,12 +27,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
  private RadioGroup mRadioGroup;
+ private RadioButton rb_home;
+ private RadioButton rb_mode;
+ private RadioButton rb_voice;
+ private RadioButton rb_safe;
+ private RadioButton rb_mine;
  private List<BaseFragement> mBaseFragment;
  private int position;
  private String cookie="";
+ private FragmentManager fragmentManager=getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       
@@ -69,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
     private void initView()
     {
         mRadioGroup=(RadioGroup)findViewById(R.id.rg_main);
+        rb_home=(RadioButton)findViewById(R.id.rb_home);
+        rb_mode=(RadioButton)findViewById(R.id.rb_mode);
+        rb_voice=(RadioButton)findViewById(R.id.rb_voice);
+        rb_safe=(RadioButton)findViewById(R.id.rb_safe);
+        rb_mine=(RadioButton)findViewById(R.id.rb_mine);
     }
 
     private class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener{
@@ -98,10 +113,10 @@ public class MainActivity extends AppCompatActivity {
             }
             BaseFragement currentFragment=getFragment();
 
-            replaceFragment(currentFragment);
+            replaceFragment(currentFragment,currentFragment.getmTag());
         }
 
-        private void replaceFragment(BaseFragement fragment)
+        private void replaceFragment(BaseFragement fragment,String tag)
         {
             Bundle bundle=new Bundle();
             bundle.putString("cookie",cookie);
@@ -110,7 +125,10 @@ public class MainActivity extends AppCompatActivity {
 
             FragmentTransaction transaction=fm.beginTransaction();
 
-            transaction.replace(R.id.fl_main,fragment);
+               transaction.replace(R.id.fl_main, fragment, tag);
+
+               transaction.addToBackStack(tag);
+               Log.e("tag", tag + "");
 
             transaction.commit();
         }
@@ -123,8 +141,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        int backStackEntryCount=fragmentManager.getBackStackEntryCount();
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
+                if(backStackEntryCount>1)
+                {
+                   fragmentManager.popBackStackImmediate();
+                   FragmentManager.BackStackEntry backStack=fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount()-1);
+                   String tag= backStack.getName();
+                   if("HomeFragment".equals(tag))
+                       rb_home.setChecked(true);
+                   else if("ModeFragment".equals(tag))
+                       rb_mode.setChecked(true);
+                   else if("VoiceFragment".equals(tag))
+                     rb_voice.setChecked(true);
+                   else if("SafeFragment".equals(tag))
+                    rb_safe.setChecked(true);
+                   else if("MineFragment".equals(tag))
+                     rb_mine.setChecked(true);
+                }
+                else
+                {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setIcon(R.drawable.tab_menu_voice)
                         .setTitle("提示！")
@@ -142,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .show();
                 break;
+            }
         }
         return false;
     }

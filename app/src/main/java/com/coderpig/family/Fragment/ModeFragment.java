@@ -8,17 +8,22 @@ import com.coderpig.family.Base.BaseFragement;
 import com.coderpig.family.R;
 
 public class ModeFragment extends BaseFragement {
-    private static final String TAG = ModeFragment.class.getSimpleName();
+    private static final String mTag = ModeFragment.class.getSimpleName();
     private View modeFragmentView;
     @Override
     protected View initView() {
-        Log.e(TAG, "模式页面Fragment页面被初始化了...");
+        Log.e(mTag, "模式页面Fragment页面被初始化了...");
         modeFragmentView = View.inflate(mContext, R.layout.fg_mode, null);
         return modeFragmentView;
     }
 
     protected void initData() {
         super.initDate();
-        Log.e(TAG, "模式Fragment页面数据被初始化了...");
+        Log.e(mTag,"模式Fragment页面数据被初始化了...");
     }
+    public String getmTag()
+    {
+        return mTag;
+    }
+
 }

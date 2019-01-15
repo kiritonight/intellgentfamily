@@ -1,4 +1,4 @@
-package com.coderpig.family.Fragment;
+package com.coderpig.family.Fragment.Home;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -6,7 +6,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -18,7 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
 
 
 import okhttp3.Call;
@@ -27,8 +25,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * The type Home data fragment.
+ */
 public class HomeDataFragment extends BaseFragement {
-    private static final String TAG =HomeDataFragment.class.getSimpleName();
+    private static final String mTag =HomeDataFragment.class.getSimpleName();
     private View homeDataFragmentView;
     private Button up_btn;
     private String cookie="";
@@ -78,7 +79,7 @@ public class HomeDataFragment extends BaseFragement {
     }
     @Override
     protected View initView() {
-        Log.e(TAG, "环境数据页面Fragment页面被初始化了...");
+        Log.e(mTag, "环境数据页面Fragment页面被初始化了...");
         homeDataFragmentView = View.inflate(mContext, R.layout.fg_home_data, null);
         up_btn=(Button)homeDataFragmentView.findViewById(R.id.update_data);
         up_btn.setOnClickListener(new HomeDateClickListener());
@@ -99,13 +100,16 @@ public class HomeDataFragment extends BaseFragement {
         return homeDataFragmentView;
     }
 
+    /**
+     * Init data.
+     */
     protected void initData() {
         super.initDate();
         Bundle args=getArguments();
         cookie=args.getString("cookie");
 
 
-        Log.e(TAG, "环境数据Fragment页面数据被初始化了...");
+        Log.e(mTag, "环境数据Fragment页面数据被初始化了...");
     }
     private class HomeDateClickListener implements View.OnClickListener{
         @Override
@@ -113,7 +117,7 @@ public class HomeDataFragment extends BaseFragement {
         {
            switch (v.getId()){
                case R.id.update_data: {
-                   Log.e(TAG,"点击按钮");
+                   Log.e(mTag,"点击按钮");
                    String url = "http://148.70.56.247:8999/request/requestData";
                    OkHttpClient okHttpClient = new OkHttpClient();
                    final Request request = new Request.Builder()
@@ -125,7 +129,7 @@ public class HomeDataFragment extends BaseFragement {
                    call.enqueue(new Callback() {
                        @Override
                        public void onFailure(Call call, IOException e) {
-                           Log.d(TAG, "onFailure: ");
+                           Log.d(mTag, "onFailure: ");
                        }
                        @Override
                        public void onResponse(Call call, Response response) throws  IOException{
@@ -160,4 +164,9 @@ public class HomeDataFragment extends BaseFragement {
            }
         }
     }
+    public String getmTag()
+    {
+        return mTag;
+    }
+
 }

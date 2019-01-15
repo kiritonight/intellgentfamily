@@ -18,4 +18,11 @@
         <item name="android:textColor">@drawable/tab_menu_text</item>
         <item name="android:textSize">15sp</item>
     </style>
+<style name="oval">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">15sp</item>
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:background">@drawable/buttonovalstyle</item>
+</style>
 </resources>

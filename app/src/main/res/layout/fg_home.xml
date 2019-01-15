@@ -9,7 +9,7 @@
        android:layout_width="match_parent"
        android:layout_height="100dp"
        android:orientation="horizontal">
-    <com.coderpig.family.Base.MyButton
+    <com.coderpig.family.Item.MyButton
         android:id="@+id/bn_home_data"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -20,7 +20,7 @@
         android:background="@color/bg_white"
         android:scaleType="center"
         />
-    <com.coderpig.family.Base.MyButton
+    <com.coderpig.family.Item.MyButton
         android:id="@+id/bn_home_controll"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal">
-        <com.coderpig.family.Base.MyButton
+        <com.coderpig.family.Item.MyButton
             android:id="@+id/myBtn3"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -47,7 +47,7 @@
             android:background="@color/bg_white"
             android:scaleType="center"
             />
-        <com.coderpig.family.Base.MyButton
+        <com.coderpig.family.Item.MyButton
             android:id="@+id/myBtn4"
             android:layout_width="match_parent"
             android:layout_height="100dp"

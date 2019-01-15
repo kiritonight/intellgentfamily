@@ -1,4 +1,4 @@
-package com.coderpig.family.Fragment;
+package com.coderpig.family.Fragment.Home;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -11,11 +11,11 @@ import com.coderpig.family.Base.BaseFragement;
 
 import com.coderpig.family.R;
 
-
-import java.util.List;
-
+/**
+ * The type Home fragment.
+ */
 public class HomeFragment extends BaseFragement {
-    private static final String TAG = HomeFragment.class.getSimpleName();
+    private static final String mTag = HomeFragment.class.getSimpleName();
     private View mainFragmentView;
 
     private  Button homeControllBtn;
@@ -31,7 +31,7 @@ public class HomeFragment extends BaseFragement {
     }
     @Override
     protected View initView() {
-        Log.e(TAG, "主页页面Fragment页面被初始化了...");
+        Log.e(mTag, "主页页面Fragment页面被初始化了...");
         mainFragmentView = View.inflate(mContext, R.layout.fg_home, null);
         homeControllBtn=(Button)mainFragmentView.findViewById(R.id.bn_home_controll);
         homeControllBtn.setOnClickListener(new HomeClickListener());
@@ -44,23 +44,27 @@ public class HomeFragment extends BaseFragement {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.bn_home_data:
-                    replaceFragment(new HomeDataFragment());
+                    replaceFragment(new HomeDataFragment(),new HomeDataFragment().getmTag());
                     break;
                 case R.id.bn_home_controll:
-                    replaceFragment(new HomeControllFragment());
+                    replaceFragment(new HomeControllFragment(),new HomeControllFragment().getmTag());
                 default:
                     break;
             }
         }
     }
+
+    /**
+     * Init data.
+     */
     protected void initData() {
        super.initDate();
       Bundle args=getArguments();
       cookie=args.getString("cookie");
-        Log.e(TAG, "主页面Fragment页面数据被初始化了...");
+        Log.e(mTag, "主页面Fragment页面数据被初始化了...");
     }
 
-    private void replaceFragment(BaseFragement fragment)
+    private void replaceFragment(BaseFragement fragment,String tag)
     {
         Bundle bundle=new Bundle();
         bundle.putString("cookie",cookie);
@@ -71,10 +75,14 @@ public class HomeFragment extends BaseFragement {
         FragmentTransaction transaction=fm.beginTransaction();
 
         transaction.replace(R.id.fl_main,fragment);
+        transaction.addToBackStack(tag);
 
         transaction.commit();
     }
-
+    public String getmTag()
+    {
+        return mTag;
+    }
 
 
 }

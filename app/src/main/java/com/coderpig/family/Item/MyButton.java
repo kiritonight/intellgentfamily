@@ -1,4 +1,4 @@
-package com.coderpig.family.Base;
+package com.coderpig.family.Item;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import com.coderpig.family.R;
 
+/**
+ * The type My button.
+ */
 public class MyButton extends Button {
     private static final int INVALIDATE_DURATION = 15;     //每次刷新的时间间隔
     private static int DIFFUSE_GAP = 10;                  //扩散半径增量
@@ -30,6 +33,12 @@ public class MyButton extends Button {
     private long downTime = 0;                 //按下的时间
 
 
+    /**
+     * Instantiates a new My button.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public MyButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         initPaint();

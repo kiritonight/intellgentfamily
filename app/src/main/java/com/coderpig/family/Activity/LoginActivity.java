@@ -29,8 +29,18 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+
+/**
+ * The type Login activity.
+ */
 public class LoginActivity extends AppCompatActivity {
+    /**
+     * The constant HOST.
+     */
     public static String HOST = "http://148.70.56.247:8999";
+    /**
+     * The Cookie.
+     */
     String cookie="";
     private EditText username;
     private EditText password;
@@ -42,7 +52,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         initView();
     }
-        public void initView()
+
+    /**
+     * Init view.
+     */
+    public void initView()
         {
           username = (EditText)findViewById(R.id.username);
          password = (EditText)findViewById(R.id.password);

@@ -15,4 +15,7 @@
     <string name="home_controll_type">1.选择设备</string>
     <string name="home_work_type">2.选择工作方式</string>
     <string name="home_work_time">3.选择定时时间（0~60s）</string>
+    <string name="seekbar_time">当前定时时间为0s</string>
+    <string name="home_controll_btn">开始</string>
+    <string name="Lack_of_control_data">请选择设备与工作模式</string>
 </resources>
