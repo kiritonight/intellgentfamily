@@ -18,8 +18,8 @@
         android:layout_height="wrap_content"
         android:rowCount="3"
         android:columnCount="3">
-        <ImageView android:src="@drawable/ic_haze" android:layout_width="120dp" android:layout_height="40dp" android:clickable="true"/>
-        <ImageView android:src="@drawable/ic_pm1" android:layout_width="120dp" android:layout_height="40dp"  android:clickable="true"/>
+        <ImageView android:src="@drawable/ic_haze" android:layout_width="120dp" android:layout_height="40dp" android:clickable="true" />
+        <ImageView android:src="@drawable/ic_pm1" android:layout_width="120dp" android:layout_height="40dp"  android:clickable="true" />
         <ImageView android:src="@drawable/ic_pm10" android:layout_width="120dp" android:layout_height="40dp"  android:clickable="true" />
 
 

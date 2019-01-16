@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_white"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/txt_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/tab_menu_mode"
-        android:textColor="@color/text_yellow"
-        android:textSize="20sp"/>
-
-</LinearLayout>
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:padding="10dp">
+      <LinearLayout
+          android:id="@+id/mode_view"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"/>
+          <Button
+              android:id="@+id/btn_getmode"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/mode_view"
+              android:text="获得模式"
+              android:layout_marginTop="10dp"/>
+  </RelativeLayout>
+</ScrollView>

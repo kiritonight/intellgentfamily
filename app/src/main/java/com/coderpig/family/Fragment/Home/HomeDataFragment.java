@@ -1,5 +1,6 @@
 package com.coderpig.family.Fragment.Home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -41,6 +42,7 @@ public class HomeDataFragment extends BaseFragement {
     private  TextView airtext; private TextView temptext;
     private TextView humtext; private  TextView timetext;
 
+    @SuppressLint("HandlerLeak")
     private  Handler mHandler=new Handler(){
         @Override
                 public void handleMessage(Message msg)
@@ -66,6 +68,7 @@ public class HomeDataFragment extends BaseFragement {
                     {
                         Log.e("错误","json解析错误");
                     }
+                    break;
             }
         }
     };
@@ -144,9 +147,10 @@ public class HomeDataFragment extends BaseFragement {
                                    @Override
                                    public void run() {
                                        //耗时操作，完成之后发送消息给Handler，完成UI更新；
-                                       mHandler.sendEmptyMessage(0);
+
                                        //需要数据传递，用下面方法；
                                        Message msg = new Message();
+                                       msg.what=0;
                                    msg.obj = jsonObject;//可以是基本类型，可以是对象，可以是List、map等；
                                        mHandler.sendMessage(msg);
                                    }

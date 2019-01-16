@@ -50,7 +50,6 @@ public class HomeControllFragment  extends  BaseFragement{
     {
         super.onCreate(savedInstanceState);
         mContext=getActivity();
-
         initData();
     }
     @Override
@@ -79,6 +78,7 @@ public class HomeControllFragment  extends  BaseFragement{
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId) {
                 case R.id.btn_light:
+
                     equipmentText="device_light";
                     break;
                 case R.id.btn_humidifier:
@@ -176,13 +176,13 @@ public class HomeControllFragment  extends  BaseFragement{
                                         if(msg.equals("success"))
                                         {
                                             Looper.prepare();
-                                            Toast.makeText(getActivity(),"控制成功",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(),equipmentText+"控制成功",Toast.LENGTH_SHORT).show();
                                             Looper.loop();
                                         }
                                         else
                                         {
                                             Looper.prepare();
-                                            Toast.makeText(getActivity(),"控制失败",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(),equipmentText+"控制失败",Toast.LENGTH_SHORT).show();
                                             Looper.loop();
                                         }
 

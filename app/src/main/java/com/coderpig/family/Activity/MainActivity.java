@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.coderpig.family.Base.BaseFragement;
 
@@ -90,21 +91,27 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onCheckedChanged(RadioGroup group,int checkedId)
         {
+            TextView textView=(TextView)findViewById(R.id.txt_topbar);
             switch (checkedId)
             {
                 case R.id.rb_home:
+                    textView.setText("四维智家");
                     position=0;
                   break;
                 case R.id.rb_mode:
+                    textView.setText("模式控制");
                  position=1;
                  break;
                 case R.id.rb_voice:
+                    textView.setText("语音控制");
                     position=2;
                     break;
                 case R.id.rb_safe:
+                    textView.setText("安全防护");
                     position=3;
                     break;
                 case R.id.rb_mine:
+                    textView.setText("我的信息");
                     position=4;
                 break;
                 default:

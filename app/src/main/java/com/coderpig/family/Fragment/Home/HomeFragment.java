@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.coderpig.family.Base.BaseFragement;
 
@@ -42,11 +43,14 @@ public class HomeFragment extends BaseFragement {
     private  class HomeClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+            TextView textView=(TextView)getActivity().findViewById(R.id.txt_topbar);
             switch (v.getId()) {
                 case R.id.bn_home_data:
+                   textView.setText("环境数据");
                     replaceFragment(new HomeDataFragment(),new HomeDataFragment().getmTag());
                     break;
                 case R.id.bn_home_controll:
+                    textView.setText("设备控制");
                     replaceFragment(new HomeControllFragment(),new HomeControllFragment().getmTag());
                 default:
                     break;
