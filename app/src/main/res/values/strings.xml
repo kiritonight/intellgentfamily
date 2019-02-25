@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Family</string>
+    <string name="app_name">四维智家</string>
 
     <string name="toptitle">四维智家</string>
     <string name="tab_menu_home">home</string>
@@ -12,7 +12,7 @@
     <string name="get_data">更新数据</string>
     <string name="celebreate">庆祝</string>
     <string name="home_controll">设备控制</string>
-    <string name="home_controll_type">1.选择设备</string>
+    <string name="home_controll_type">选择设备</string>
     <string name="home_work_type">2.选择工作方式</string>
     <string name="home_work_time">3.选择定时时间（0~60s）</string>
     <string name="seekbar_time">当前定时时间为0s</string>

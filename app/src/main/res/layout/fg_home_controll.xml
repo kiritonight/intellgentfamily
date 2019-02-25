@@ -1,99 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_white"
     android:orientation="vertical"
-  >
+    android:background="@color/bg_white"
+    >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="@string/home_controll_type"
         android:textColor="@color/text_gray"/>
-    <RadioGroup
-        android:id="@+id/equipment_selection"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:orientation="horizontal">
-        <RadioButton
+        android:orientation="horizontal"
+        >
+        <Button
             android:id="@+id/btn_light"
-           style="@style/tab_menu_item"
-            android:drawableTop="@drawable/tab_btn_light"
+            android:background="@color/bg_white"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_light_shine"
+
             android:text="light"
-            ></RadioButton>
-        <RadioButton
+            style="@style/tab_menu_item"/>
+        <Button
             android:id="@+id/btn_humidifier"
-            style="@style/tab_menu_item"
-            android:drawableTop="@drawable/tab_btn_hum"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_hum_on"
+
             android:text="humidifier"
-            ></RadioButton>
-        <RadioButton
-           android:id="@+id/btn_conditioner"
             style="@style/tab_menu_item"
-            android:drawableTop="@drawable/tab_btn_aircon"
-            android:text="conditioner"
-            ></RadioButton>
-    </RadioGroup>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/home_work_type"
-        android:textColor="@color/text_gray"/>
-    <RadioGroup
-        android:id="@+id/mode_selection"
+            />
+        <Button
+            android:id="@+id/btn_conditioner"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_aircon_on"
+
+            android:text="aircondition"
+            style="@style/tab_menu_item"/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/btn_on"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btn_tv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_television"
             style="@style/tab_menu_item"
-            android:drawableTop="@drawable/tab_btn_on"
-            android:text="on"
-            ></RadioButton>
-        <RadioButton
-            android:id="@+id/btn_off"
-            style="@style/tab_menu_item"
-            android:drawableTop="@drawable/tab_btn_off"
-            android:text="off"
-            ></RadioButton>
-        <RadioButton
-            android:id="@+id/btn_mode"
-            style="@style/tab_menu_item"
-            android:drawableTop="@drawable/tab_btn_mode"
-            android:text="mode"
-            ></RadioButton>
 
-    </RadioGroup>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/home_work_time"
-        android:textColor="@color/text_gray"/>
-    <SeekBar
-        android:id="@+id/seekbar_time"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:max="60"
-        android:min="0"
-        android:progress="0"
-        android:backgroundTint="@color/green"
-        style="@android:style/Widget.Holo.SeekBar"/>
-    <TextView
-        android:id="@+id/seekbar_time_text"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/seekbar_time"
-        android:textColor="@color/text_gray"/>
-    <Button
-        android:id="@+id/home_controll_btn"
-        style="@style/oval"
-        android:layout_gravity="center"
-        android:text="@string/home_controll_btn"/>
-
+            android:text="television"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            style="@style/tab_menu_item"
+            android:drawableTop="@mipmap/ic_null_btn"
+            android:clickable="false"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            style="@style/tab_menu_item"
+            android:drawableTop="@mipmap/ic_null_btn"
+            android:clickable="false"/>
+    </LinearLayout>
 </LinearLayout>

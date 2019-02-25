@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="120dp">
+     <Button
+         android:id="@+id/hum_on_Btn"
+         android:layout_width="100dp"
+         android:layout_height="100dp"
+         android:text="启动"
+         android:textColor="@color/bg_white"
+         />
+        <Button
+            android:id="@+id/hum_off_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="关闭"
+            android:textColor="@color/bg_white"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp">
+        <Button
+            android:id="@+id/hum_up_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="增加湿度"
+            android:textColor="@color/bg_white"/>
+        <Button
+            android:id="@+id/hum_down_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="降低湿度"
+            android:textColor="@color/bg_white"/>
+
+
+    </LinearLayout>
+</LinearLayout>

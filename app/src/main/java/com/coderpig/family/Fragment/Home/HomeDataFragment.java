@@ -52,17 +52,17 @@ public class HomeDataFragment extends BaseFragement {
                 case 0:
                     try {
                         JSONObject jsonObject = (JSONObject) msg.obj;
-                        pm25text.setText(jsonObject.getString("pm25"));
-                        pm1text.setText(jsonObject.getString("pm10"));
-                        pm10text.setText(jsonObject.getString("pm100"));
-                        firetext.setText(jsonObject.getString("if_fire"));
-                        watertext.setText(jsonObject.getString("if_rain"));
-                        methanaltext.setText(jsonObject.getString("hcho"));
-                        cotext.setText(jsonObject.getString("co"));
-                        lighttext.setText(jsonObject.getString("light_intensity"));
-                        airtext.setText(jsonObject.getString("air_quality"));
-                        temptext.setText(jsonObject.getString("air_temperature"));
-                        humtext.setText(jsonObject.getString("air_humidity"));
+                        pm25text.setText(getStr(jsonObject.getString("pm25"))+"ug/m³");
+                        pm1text.setText(getStr(jsonObject.getString("pm10"))+"ug/m³");
+                        pm10text.setText(getStr(jsonObject.getString("pm100"))+"ug/m³");
+                        firetext.setText(getStr(jsonObject.getString("if_fire")));
+                        watertext.setText(getStr(jsonObject.getString("if_rain")));
+                        methanaltext.setText(getStr(jsonObject.getString("hcho"))+"ppm");
+                        cotext.setText(getStr(jsonObject.getString("co"))+"ppm");
+                        lighttext.setText(getStr(jsonObject.getString("light_intensity")));
+                        airtext.setText(getStr(jsonObject.getString("air_quality")+"ppm"));
+                        temptext.setText(getStr(jsonObject.getString("air_temperature"))+"°C");
+                        humtext.setText(getStr(jsonObject.getString("air_humidity"))+"%");
                         timetext.setText(jsonObject.getString("time"));
                     }catch (Exception e)
                     {
@@ -171,6 +171,22 @@ public class HomeDataFragment extends BaseFragement {
     public String getmTag()
     {
         return mTag;
+    }
+    private String getStr(String str)
+    {
+       int len=str.length();
+       int index=0;
+       char strs[]=str.toCharArray();
+       for(int i=0;i<len;i++)
+       {
+           if('0'!=strs[i])
+           {
+               index=i;
+               break;
+           }
+       }
+       String strLast=str.substring(index,len);
+       return strLast;
     }
 
 }

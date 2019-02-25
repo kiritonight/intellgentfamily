@@ -1,5 +1,6 @@
 package com.coderpig.family.Fragment;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -10,6 +11,13 @@ import com.coderpig.family.R;
 public class VoiceFragment extends BaseFragement {
     private static final String mTag =VoiceFragment.class.getSimpleName();
     private View voiceFragmentView;
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        mContext=getActivity();
+        initData();
+    }
     @Override
     protected View initView() {
         Log.e(mTag, "声音识别页面Fragment页面被初始化了...");
