@@ -16,15 +16,20 @@
          android:id="@+id/hum_on_Btn"
          android:layout_width="100dp"
          android:layout_height="100dp"
+         android:drawableTop="@mipmap/ic_on_on"
          android:text="启动"
-         android:textColor="@color/bg_white"
+         android:textColor="@color/text_gray"
+         android:background="@color/bg_white"
+
          />
         <Button
             android:id="@+id/hum_off_Btn"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:drawableTop="@mipmap/ic_off_on"
             android:text="关闭"
-            android:textColor="@color/bg_white"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
             />
     </LinearLayout>
     <LinearLayout
@@ -37,13 +42,17 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="增加湿度"
-            android:textColor="@color/bg_white"/>
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_up"/>
         <Button
             android:id="@+id/hum_down_Btn"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="降低湿度"
-            android:textColor="@color/bg_white"/>
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_down"/>
 
 
     </LinearLayout>

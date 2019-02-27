@@ -20,6 +20,13 @@
             android:layout_margin="5dp"
             android:textColor="@color/text_gray"
             android:gravity="center"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white">
         <TextView
             android:text="模式名称"
             android:layout_width="0dp"
@@ -34,29 +41,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:textColor="@color/text_gray"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_white">
-
-        <TextView
-              android:text="控制码"
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:layout_weight="1"
-              android:layout_margin="5dp"
-              android:textColor="@color/text_gray"
-              android:gravity="center"/>
-        <TextView
-            android:id="@+id/text_controlnum"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_margin="5dp"
-            android:textColor="@color/text_gray"/>
+            android:textColor="@color/text_gray"
+            android:gravity="center"/>
         <Button
             android:id="@+id/mode_item_on"
             android:layout_width="0dp"

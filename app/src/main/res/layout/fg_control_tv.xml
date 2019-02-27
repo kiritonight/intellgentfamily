@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="120dp">
+        <Button
+            android:id="@+id/tv_on_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:drawableTop="@mipmap/ic_on_on"
+            android:text="启动"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            />
+        <Button
+            android:id="@+id/tv_off_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:drawableTop="@mipmap/ic_off_on"
+            android:text="关闭"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp">
+        <Button
+            android:id="@+id/tv_up_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="调台+"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_up"/>
+        <Button
+            android:id="@+id/tv_down_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="调台-"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_down"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp">
+        <Button
+            android:id="@+id/tv_soundup_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="音量+"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_up"/>
+        <Button
+            android:id="@+id/tv_sounddown_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="音量-"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_down"/>
+
+
+    </LinearLayout>
+</LinearLayout>

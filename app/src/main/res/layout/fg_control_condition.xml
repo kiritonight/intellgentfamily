@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+    <RadioGroup
+        android:id="@+id/condition_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/btn_conditioner1"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_aircon"
+            android:text="conditioner1"
+            >
 
-</android.support.constraint.ConstraintLayout>
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/btn_conditioner2"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_aircon"
+            android:text="conditioner2"
+            ></RadioButton>
+        <RadioButton
+            android:id="@+id/btn_conditioner3"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_btn_aircon"
+            android:text="conditioner3"
+            >
+
+        </RadioButton>
+    </RadioGroup>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="40dp">
+        <Button
+            android:id="@+id/con_on_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:drawableTop="@mipmap/ic_on_on"
+            android:text="启动"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            />
+        <Button
+            android:id="@+id/con_off_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:drawableTop="@mipmap/ic_off_on"
+            android:text="关闭"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp">
+        <Button
+            android:id="@+id/con_tempup_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="温度+"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_up"/>
+        <Button
+            android:id="@+id/con_tempdown_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="温度-"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_down"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp">
+        <Button
+            android:id="@+id/con_wind_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="风向"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_winddirection"/>
+        <Button
+            android:id="@+id/con_turnhot_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="制热"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_turnhot"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp">
+        <Button
+            android:id="@+id/con_turncold_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="制冷"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_turncold"/>
+        <Button
+            android:id="@+id/con_ventilate_Btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="通风"
+            android:textColor="@color/text_gray"
+            android:background="@color/bg_white"
+            android:drawableTop="@mipmap/ic_ventilate"/>
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

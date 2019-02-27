@@ -114,7 +114,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:id="@+id/update_data"
-        android:text="更新数据"
+        android:text="自动更新数据"
         android:textColor="@color/text_gray"
         android:textColorHint="@color/text_yellow"
         android:layout_gravity="center_horizontal"

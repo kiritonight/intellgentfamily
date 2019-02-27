@@ -34,16 +34,17 @@ public class HomeDataFragment extends BaseFragement {
     private View homeDataFragmentView;
     private Button up_btn;
     private String cookie="";
-
+    private Handler handler=new Handler();
+    private Runnable runnable;
     private TextView pm25text; private  TextView pm1text;
     private  TextView pm10text; private TextView firetext;
     private  TextView watertext; private  TextView methanaltext;
     private TextView cotext;  private  TextView lighttext;
     private  TextView airtext; private TextView temptext;
     private TextView humtext; private  TextView timetext;
-
+    private int upDateFlag=0;
     @SuppressLint("HandlerLeak")
-    private  Handler mHandler=new Handler(){
+    public Handler mHandler=new Handler(){
         @Override
                 public void handleMessage(Message msg)
         {
@@ -77,7 +78,53 @@ public class HomeDataFragment extends BaseFragement {
     {
         super.onCreate(savedInstanceState);
         mContext=getActivity();
+        runnable=new Runnable() {
+            @Override
+            public void run() {
+                Log.e(mTag,"请求数据");
+                String url = "http://148.70.56.247:8999/request/requestData";
+                OkHttpClient okHttpClient = new OkHttpClient();
+                final Request request = new Request.Builder()
+                        .url(url)
+                        .header("Cookie",cookie)
+                        .get()//默认就是GET请求，可以不写
+                        .build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.d(mTag, "onFailure: ");
+                    }
+                    @Override
+                    public void onResponse(Call call, Response response) throws  IOException{
+                        String json= response.body().string();
+                        try {
 
+                            JSONArray jsonArray = new JSONArray(json);
+                            final JSONObject jsonObject = (JSONObject) jsonArray.get(jsonArray.length()-1);
+
+                            Log.e("json", jsonObject.toString());
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    //耗时操作，完成之后发送消息给Handler，完成UI更新；
+
+                                    //需要数据传递，用下面方法；
+                                    Message msg = new Message();
+                                    msg.what=0;
+                                    msg.obj = jsonObject;//可以是基本类型，可以是对象，可以是List、map等；
+                                    mHandler.sendMessage(msg);
+                                }
+
+                            }).start();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            handler.postDelayed(this,1000);
+            }
+        };
         initData();
     }
     @Override
@@ -119,50 +166,23 @@ public class HomeDataFragment extends BaseFragement {
         public void onClick(View v)
         {
            switch (v.getId()){
-               case R.id.update_data: {
-                   Log.e(mTag,"点击按钮");
-                   String url = "http://148.70.56.247:8999/request/requestData";
-                   OkHttpClient okHttpClient = new OkHttpClient();
-                   final Request request = new Request.Builder()
-                           .url(url)
-                           .header("Cookie",cookie)
-                           .get()//默认就是GET请求，可以不写
-                           .build();
-                   Call call = okHttpClient.newCall(request);
-                   call.enqueue(new Callback() {
-                       @Override
-                       public void onFailure(Call call, IOException e) {
-                           Log.d(mTag, "onFailure: ");
-                       }
-                       @Override
-                       public void onResponse(Call call, Response response) throws  IOException{
-                         String json= response.body().string();
-                           try {
-
-                               JSONArray jsonArray = new JSONArray(json);
-                            final JSONObject jsonObject = (JSONObject) jsonArray.get(jsonArray.length()-1);
-
-                              Log.e("json", jsonObject.toString());
-                               new Thread(new Runnable() {
-                                   @Override
-                                   public void run() {
-                                       //耗时操作，完成之后发送消息给Handler，完成UI更新；
-
-                                       //需要数据传递，用下面方法；
-                                       Message msg = new Message();
-                                       msg.what=0;
-                                   msg.obj = jsonObject;//可以是基本类型，可以是对象，可以是List、map等；
-                                       mHandler.sendMessage(msg);
-                                   }
-
-                               }).start();
-                           } catch (JSONException e) {
-                               e.printStackTrace();
-                           }
-                       }
-                   });
+               case R.id.update_data:
+                   {
+                if(upDateFlag==0)
+                {
+                    handler.postDelayed(runnable,10);
+                    up_btn.setText("停止自动更新");
+                    upDateFlag=1;
+                }
+                else if(upDateFlag==1)
+                {
+                    handler.removeCallbacks(runnable);
+                    up_btn.setText("自动更新数据");
+                    upDateFlag=0;
+                }
                }
                    break;
+
                 default:
                     break;
            }

@@ -39,7 +39,7 @@ public class ModeFragment extends BaseFragement {
     private View modeFragmentView;
     private LinearLayout modeView;
     private Button btnGetMode;
-
+    private String [] commandTexts=new String[100];
     private  TextView controltext;
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -128,13 +128,15 @@ public class ModeFragment extends BaseFragement {
 
                  Log.e(mTag,v.getTag().toString());
                  final String num=v.getTag().toString();
+                 final String command=commandTexts[Integer.parseInt(num)];
                  new Thread(new Runnable() {
                      @Override
                      public void run() {
-                         String url="http://148.70.56.247:8999/request/setProfiles";
+                         String url="http://148.70.56.247:8999/request/Ctrl";
                          FormBody formBody=new FormBody
                                  .Builder()
-                                 .add("profileID",num)
+                                 .add("device","device_Profile")
+                                 .add("command",command)
                                  .build();
                          final Request request= new Request
                                  .Builder()
@@ -190,12 +192,11 @@ public class ModeFragment extends BaseFragement {
        TextView modename=(TextView)item.findViewById(R.id.text_modename);
          modename.setText(mode_name);
          Log.e(mTag,modename.getText()+"");
-         TextView controlnum=(TextView)item.findViewById(R.id.text_controlnum);
-         controlnum.setText(mode_command);
+         commandTexts[Integer.parseInt(id)]=mode_command;
          Button modeBtn=(Button)item.findViewById(R.id.mode_item_on);
          modeBtn.setOnClickListener(new ModeClickListener());
          modeBtn.setTag(id);
-         Log.e(mTag,controlnum.getText()+"");
+
          modeView.addView(item);
     }
     protected void initData() {
@@ -224,7 +225,7 @@ public class ModeFragment extends BaseFragement {
                      Log.e(mTag,String.valueOf(jsonObject));
              String id = jsonObject.getString("id");
              String mode_name = jsonObject.getString("mode_name");
-            String mode_command=jsonObject.getString("mode_command");
+            String mode_command=jsonObject.getString("commandText");
 
                 addViewItem(id,mode_name,mode_command);
  }catch (JSONException e){
