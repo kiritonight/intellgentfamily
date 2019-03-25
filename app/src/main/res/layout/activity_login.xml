@@ -15,12 +15,14 @@
         android:layout_height="59dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="92dp"
-        android:text="四维智家"
-        android:textColor="@color/text_gray"
+        android:text="智巢"
+        android:textColor="@color/text_black"
         android:textSize="40dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableLeft="@mipmap/ic_login_home"/>
 
     <EditText
         android:id="@+id/username"

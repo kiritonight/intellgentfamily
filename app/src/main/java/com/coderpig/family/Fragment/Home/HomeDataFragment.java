@@ -1,16 +1,23 @@
 package com.coderpig.family.Fragment.Home;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 
 import com.coderpig.family.Base.BaseFragement;
+import com.coderpig.family.Fragment.Home.data.HomeDataViewFragment;
 import com.coderpig.family.R;
 
 import org.json.JSONArray;
@@ -18,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URI;
 
 
 import okhttp3.Call;
@@ -32,7 +40,7 @@ import okhttp3.Response;
 public class HomeDataFragment extends BaseFragement {
     private static final String mTag =HomeDataFragment.class.getSimpleName();
     private View homeDataFragmentView;
-    private Button up_btn;
+
     private String cookie="";
     private Handler handler=new Handler();
     private Runnable runnable;
@@ -42,7 +50,13 @@ public class HomeDataFragment extends BaseFragement {
     private TextView cotext;  private  TextView lighttext;
     private  TextView airtext; private TextView temptext;
     private TextView humtext; private  TextView timetext;
+    private Button dataViewBtn;
     private int upDateFlag=0;
+   public static void reMoveThread(HomeDataFragment homeDataFragment){
+    //   homeDataFragment.runnable
+
+    }
+
     @SuppressLint("HandlerLeak")
     public Handler mHandler=new Handler(){
         @Override
@@ -61,7 +75,7 @@ public class HomeDataFragment extends BaseFragement {
                         methanaltext.setText(getStr(jsonObject.getString("hcho"))+"ppm");
                         cotext.setText(getStr(jsonObject.getString("co"))+"ppm");
                         lighttext.setText(getStr(jsonObject.getString("light_intensity")));
-                        airtext.setText(getStr(jsonObject.getString("air_quality")+"ppm"));
+                        airtext.setText(getStr(jsonObject.getString("air_quality")));
                         temptext.setText(getStr(jsonObject.getString("air_temperature"))+"°C");
                         humtext.setText(getStr(jsonObject.getString("air_humidity"))+"%");
                         timetext.setText(jsonObject.getString("time"));
@@ -73,6 +87,12 @@ public class HomeDataFragment extends BaseFragement {
             }
         }
     };
+   @Override
+   public void onStop()
+   {
+       handler.removeCallbacks(runnable);
+       super.onStop();
+   }
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -101,7 +121,7 @@ public class HomeDataFragment extends BaseFragement {
                         try {
 
                             JSONArray jsonArray = new JSONArray(json);
-                            final JSONObject jsonObject = (JSONObject) jsonArray.get(jsonArray.length()-1);
+                            final JSONObject jsonObject = (JSONObject) jsonArray.get(0);
 
                             Log.e("json", jsonObject.toString());
                             new Thread(new Runnable() {
@@ -125,14 +145,14 @@ public class HomeDataFragment extends BaseFragement {
             handler.postDelayed(this,1000);
             }
         };
+        handler.postDelayed(runnable,10);
         initData();
     }
     @Override
     protected View initView() {
         Log.e(mTag, "环境数据页面Fragment页面被初始化了...");
         homeDataFragmentView = View.inflate(mContext, R.layout.fg_home_data, null);
-        up_btn=(Button)homeDataFragmentView.findViewById(R.id.update_data);
-        up_btn.setOnClickListener(new HomeDateClickListener());
+
 
         pm25text=(TextView)homeDataFragmentView.findViewById(R.id.pm25_text);
         pm1text=(TextView)homeDataFragmentView.findViewById(R.id.pm1_text);
@@ -146,7 +166,8 @@ public class HomeDataFragment extends BaseFragement {
         temptext=(TextView)homeDataFragmentView.findViewById(R.id.temp_text);
         humtext=(TextView)homeDataFragmentView.findViewById(R.id.hum_text);
         timetext=(TextView)homeDataFragmentView.findViewById(R.id.time_text);
-
+        dataViewBtn=(Button)homeDataFragmentView.findViewById(R.id.data_view);
+        dataViewBtn.setOnClickListener(new HomeDateClickListener());
         return homeDataFragmentView;
     }
 
@@ -166,28 +187,18 @@ public class HomeDataFragment extends BaseFragement {
         public void onClick(View v)
         {
            switch (v.getId()){
-               case R.id.update_data:
-                   {
-                if(upDateFlag==0)
-                {
-                    handler.postDelayed(runnable,10);
-                    up_btn.setText("停止自动更新");
-                    upDateFlag=1;
-                }
-                else if(upDateFlag==1)
-                {
-                    handler.removeCallbacks(runnable);
-                    up_btn.setText("自动更新数据");
-                    upDateFlag=0;
-                }
-               }
-                   break;
 
+               case R.id.data_view:
+
+                   replaceFragment(new HomeDataViewFragment(),new HomeDataViewFragment().getmTag());
+                   break;
                 default:
                     break;
            }
         }
     }
+
+
     public String getmTag()
     {
         return mTag;
@@ -208,5 +219,19 @@ public class HomeDataFragment extends BaseFragement {
        String strLast=str.substring(index,len);
        return strLast;
     }
+    private void replaceFragment(BaseFragement fragment,String tag)
+    {
+        Bundle bundle=new Bundle();
+        bundle.putString("cookie",cookie);
+        fragment.setArguments(bundle);
 
+        FragmentManager fm=getFragmentManager();
+
+        FragmentTransaction transaction=fm.beginTransaction();
+
+        transaction.replace(R.id.fl_main,fragment);
+        transaction.addToBackStack(tag);
+
+        transaction.commit();
+    }
 }

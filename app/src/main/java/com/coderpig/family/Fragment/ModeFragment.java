@@ -186,6 +186,8 @@ public class ModeFragment extends BaseFragement {
 
        Log.e(mTag,id+" "+mode_name+" "+mode_command);
         View item = View.inflate(getActivity(), R.layout.item_mode, null);
+      float a= (float) 0.8;
+        item.setAlpha(a);
        TextView modeid=(TextView)item.findViewById(R.id.mode_id);
        modeid.setText(id);
        Log.e(mTag,modeid.getText()+"");

@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
  private List<BaseFragement> mBaseFragment;
  private int position;
  private String cookie="";
+ private String username="";
+ private String logintime="";
  private FragmentManager fragmentManager=getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         mBaseFragment.add(new MineFragment());
         Intent intent=this.getIntent();
         cookie=intent.getStringExtra("cookie");
-        Log.e("错误",cookie);
+        username=intent.getStringExtra("username");
+        logintime=intent.getStringExtra("logintime");
+        Log.e("用户名",username);
 
 
     }
@@ -95,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             switch (checkedId)
             {
                 case R.id.rb_home:
-                    textView.setText("四维智家");
+                    textView.setText("智巢");
                     position=0;
                   break;
                 case R.id.rb_mode:
@@ -127,6 +131,9 @@ public class MainActivity extends AppCompatActivity {
         {
             Bundle bundle=new Bundle();
             bundle.putString("cookie",cookie);
+            bundle.putString("username",username);
+            bundle.putString("logintime",logintime);
+            Log.e("传递系统时间",username);
             fragment.setArguments(bundle);
             FragmentManager fm=getSupportFragmentManager();
 

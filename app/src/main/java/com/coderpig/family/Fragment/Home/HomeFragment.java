@@ -47,6 +47,7 @@ public class HomeFragment extends BaseFragement {
             switch (v.getId()) {
                 case R.id.bn_home_data:
                    textView.setText("环境数据");
+
                     replaceFragment(new HomeDataFragment(),new HomeDataFragment().getmTag());
                     break;
                 case R.id.bn_home_controll:

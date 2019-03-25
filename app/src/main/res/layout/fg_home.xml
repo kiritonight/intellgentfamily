@@ -4,14 +4,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_white"
-    android:orientation="vertical">
+    android:background="@mipmap/bg_home_test2"
+    android:orientation="vertical"
+   >
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="100dp"
        android:orientation="horizontal">
     <com.coderpig.family.Item.MyButton
-        android:layout_margin="5dp"
+        android:alpha="0.7"
+        android:layout_margin="10dp"
         android:id="@+id/bn_home_data"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -21,9 +23,11 @@
         android:textColor="@color/text_yellow"
         android:background="@color/bg_white"
         android:scaleType="center"
+        android:textSize="15dp"
         />
     <com.coderpig.family.Item.MyButton
-        android:layout_margin="5dp"
+        android:alpha="0.7"
+        android:layout_margin="10dp"
         android:id="@+id/bn_home_controll"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -33,35 +37,8 @@
         android:textColor="@color/text_yellow"
         android:background="@color/bg_white"
         android:scaleType="center"
+        android:textSize="15dp"
         />
    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
-        <com.coderpig.family.Item.MyButton
-            android:layout_margin="5dp"
-            android:id="@+id/myBtn3"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:drawableLeft="@mipmap/tab_home_pressed"
-            android:text="@string/nothing"
-            android:textColor="@color/text_yellow"
-            android:background="@color/bg_white"
-            android:scaleType="center"
-            />
-        <com.coderpig.family.Item.MyButton
-            android:layout_margin="5dp"
-            android:id="@+id/myBtn4"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:drawableLeft="@mipmap/tab_home_pressed"
-            android:text="@string/nothing"
-            android:textColor="@color/text_yellow"
-            android:background="@color/bg_white"
-            android:scaleType="center"
-            />
-    </LinearLayout>
+
 </LinearLayout>

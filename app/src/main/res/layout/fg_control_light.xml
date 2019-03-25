@@ -27,7 +27,7 @@
          android:layout_width="match_parent"
          android:layout_height="50dp"
          android:layout_weight="2"
-         android:text="灯1"
+         android:text="厨房灯"
          android:gravity="center"
          android:textColor="@color/text_gray"/>
     <SeekBar
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="2"
-                android:text="灯2"
+                android:text="卧室灯"
                 android:gravity="center"
                 android:textColor="@color/text_gray"/>
             <SeekBar
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="2"
-                android:text="灯3"
+                android:text="客厅灯"
                 android:gravity="center"
                 android:textColor="@color/text_gray"/>
             <SeekBar
@@ -111,20 +111,20 @@
             android:id="@+id/btn_color_light"
             style="@style/tab_menu_item"
             android:drawableTop="@drawable/tab_btn_light"
-            android:text="灯1"
+            android:text="厨房灯"
             >
         </RadioButton>
         <RadioButton
             android:id="@+id/btn_color_light2"
             style="@style/tab_menu_item"
             android:drawableTop="@drawable/tab_btn_light"
-            android:text="灯2"
+            android:text="卧室灯"
             ></RadioButton>
         <RadioButton
             android:id="@+id/btn_color_light3"
             style="@style/tab_menu_item"
             android:drawableTop="@drawable/tab_btn_light"
-            android:text="灯3"
+            android:text="客厅灯"
             ></RadioButton>
     </RadioGroup>
     <LinearLayout

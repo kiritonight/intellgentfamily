@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg_white"
+    android:background="@mipmap/bg_equipselect"
     >
     <TextView
         android:layout_width="match_parent"
@@ -26,7 +26,9 @@
             android:drawableTop="@mipmap/ic_light_shine"
 
             android:text="light"
-            style="@style/tab_menu_item"/>
+            style="@style/tab_menu_item"
+            android:alpha="0.8"
+            />
         <Button
             android:id="@+id/btn_humidifier"
             android:layout_width="match_parent"
@@ -36,16 +38,9 @@
 
             android:text="humidifier"
             style="@style/tab_menu_item"
+            android:alpha="0.8"
             />
-        <Button
-            android:id="@+id/btn_conditioner"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:drawableTop="@mipmap/ic_aircon_on"
 
-            android:text="aircondition"
-            style="@style/tab_menu_item"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,20 +56,17 @@
             style="@style/tab_menu_item"
 
             android:text="television"
+            android:alpha="0.8"
             />
         <Button
+            android:id="@+id/btn_conditioner"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_aircon_on"
+
+            android:text="aircondition"
             style="@style/tab_menu_item"
-            android:drawableTop="@mipmap/ic_null_btn"
-            android:clickable="false"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            style="@style/tab_menu_item"
-            android:drawableTop="@mipmap/ic_null_btn"
-            android:clickable="false"/>
+            android:alpha="0.8"/>
     </LinearLayout>
 </LinearLayout>

@@ -280,7 +280,7 @@ public class LightFragment extends BaseFragement {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress1=progress+10;
-                tl1.setText("灯1:"+progress1);
+                tl1.setText("厨房灯:"+progress1);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -293,7 +293,7 @@ public class LightFragment extends BaseFragement {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress2=progress+10;
-                tl2.setText("灯2："+progress2);
+                tl2.setText("卧室灯："+progress2);
             }
 
             @Override
@@ -310,7 +310,7 @@ public class LightFragment extends BaseFragement {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress3=progress+10;
-                tl3.setText("灯3："+progress3);
+                tl3.setText("客厅灯："+progress3);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {

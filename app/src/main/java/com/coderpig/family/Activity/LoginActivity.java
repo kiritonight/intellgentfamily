@@ -19,6 +19,8 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.Call;
@@ -125,6 +127,10 @@ public class LoginActivity extends AppCompatActivity {
 
                                                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                                                intent.putExtra("cookie",cookie);
+                                               intent.putExtra("username",username.getText().toString());
+                                               SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                               Date date=new Date(System.currentTimeMillis());
+                                               intent.putExtra("logintime",simpleDateFormat.format(date));
                                                startActivity(intent);
                                                finish();
                                                Looper.loop();
