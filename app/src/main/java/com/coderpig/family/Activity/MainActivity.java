@@ -1,8 +1,10 @@
 package com.coderpig.family.Activity;
 
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.nfc.Tag;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -23,6 +25,8 @@ import com.coderpig.family.Fragment.ModeFragment;
 import com.coderpig.family.Fragment.SafeFragment;
 import com.coderpig.family.Fragment.VoiceFragment;
 import com.coderpig.family.R;
+import com.coderpig.family.unit.MqttManager;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +36,7 @@ import java.util.List;
  * The type Main activity.
  */
 public class MainActivity extends AppCompatActivity {
+    private static final String mTag = MainActivity.class.getSimpleName();
  private RadioGroup mRadioGroup;
  private RadioButton rb_home;
  private RadioButton rb_mode;
@@ -43,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
  private String cookie="";
  private String username="";
  private String logintime="";
+
+
+
+
+
+
  private FragmentManager fragmentManager=getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         setListener();
 
     }
+
     private void setListener()
     {
         mRadioGroup.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
@@ -183,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
                                 finish();
                             }
                         })

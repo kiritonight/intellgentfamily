@@ -14,6 +14,7 @@ import com.coderpig.family.Base.BaseFragement;
 import com.coderpig.family.Base.Constants;
 import com.coderpig.family.Base.ImageDispose;
 import com.coderpig.family.R;
+import com.coderpig.family.unit.MqttManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -23,6 +24,13 @@ import java.net.Socket;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class SafeFragment extends BaseFragement {
     private static final String mTag =SafeFragment.class.getSimpleName();
@@ -35,21 +43,34 @@ public class SafeFragment extends BaseFragement {
    private Socket socket=new Socket();
     private int socketfalg=0;
 
+    private static   InputStream inputStream;
+
     public static ThreadPoolExecutor executor;
 
+    private MqttManager mqttManager=null;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         mContext=getActivity();
         initData();
+
+
     }
+
+
     @Override
     protected View initView() {
         Log.e(mTag, "安全页面Fragment页面被初始化了...");
         safeFragmentView = View.inflate(mContext, R.layout.fg_safe, null);
         showVideoBtn=(Button)safeFragmentView.findViewById(R.id.show_video_btn);
         videoView=(ImageView)safeFragmentView.findViewById(R.id.video_view);
+
+
+        Log.e(mTag,"开启MQTT服务");
+        mqttManager=new MqttManager(getContext());
+        mqttManager.connect();
+        mqttManager.subscribe("AIResult",0);
         showVideoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +83,13 @@ public class SafeFragment extends BaseFragement {
                                 @Override
                                 public void run() {
                             try {
+
+                             //   videoView.setImageResource(R.mipmap.ic_stop_on);
+
+
+                                executor = new ThreadPoolExecutor(30, 50, 500, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(10000));
+                                // executor.prestartAllCoreThreads();
+                                executor.allowCoreThreadTimeOut(true);
                                 Log.e(mTag,"正在连接socket");
                                 socket= new Socket("148.70.56.247", 8997);
                                 if(socket.isConnected())
@@ -70,6 +98,7 @@ public class SafeFragment extends BaseFragement {
                                 showVideoBtn.setText("停止");
                                 ReceivePic(socket);
                                 }
+
                             } catch (IOException e) {
                                 Log.e(mTag,"socket连接中断");
 
@@ -88,17 +117,49 @@ public class SafeFragment extends BaseFragement {
                         {
                             if(socketfalg==1)
                             {
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
 
-                                try {
-                                    socket.close();
-                                    Log.e(mTag,"socket关闭");
-                                }
-                                catch (IOException e) {
-                                   Log.e(mTag,"关闭出错");
-                                }
-                                executor.shutdown();
-                                socketfalg=0;
-                                showVideoBtn.setText("显示");
+                                        String url="http://148.70.56.247:8999/request/videoShutDown";
+                                        OkHttpClient okHttpClient=new OkHttpClient();
+                                        final Request request = new Request.Builder()
+                                                .url(url)
+                                                .header("Cookie", cookie)
+                                                .get()
+                                                .build();
+                                        Call call = okHttpClient.newCall(request);
+                                        call.enqueue(new Callback() {
+                                            @Override
+                                            public void onFailure(Call call, IOException e) {
+                                                Looper.prepare();
+                                                Toast.makeText(getActivity(), "网络连接异常", Toast.LENGTH_SHORT).show();
+                                                Looper.loop();
+                                            }
+
+                                            @Override
+                                            public void onResponse(Call call, Response response) throws IOException {
+                                                String json = response.body().string();
+                                                if("success".equals(json))
+                                                {
+                                                    try {
+                                                        inputStream.close();
+                                                        socket.close();
+                                                        Log.e(mTag,"socket关闭");
+                                                    }
+                                                    catch (IOException e) {
+                                                        Log.e(mTag,"关闭出错");
+                                                    }
+                                                    executor.shutdown();
+                                                    socketfalg=0;
+                                                    showVideoBtn.setText("显示");
+
+                                                }
+                                            }
+                                        });
+                                    }
+                                }).start();
+
                             }
 
                         }
@@ -114,6 +175,52 @@ public class SafeFragment extends BaseFragement {
     public  void onStop()
     {
       super.onStop();
+      mqttManager.onDestroy();
+      if((socketfalg==1)&&(showVideoBtn.getText().equals("停止")))
+        {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    String url="http://148.70.56.247:8999/request/videoShutDown";
+                    OkHttpClient okHttpClient=new OkHttpClient();
+                    final Request request = new Request.Builder()
+                            .url(url)
+                            .header("Cookie", cookie)
+                            .get()
+                            .build();
+                    Call call = okHttpClient.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Looper.prepare();
+                            Toast.makeText(getActivity(), "网络连接异常", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            String json = response.body().string();
+                            if("success".equals(json))
+                            {
+                                try {
+                                    inputStream.close();
+                                    socket.close();
+                                    Log.e(mTag,"socket关闭");
+                                }
+                                catch (IOException e) {
+                                    Log.e(mTag,"关闭出错");
+                                }
+                                executor.shutdown();
+                                socketfalg=0;
+                                showVideoBtn.setText("显示");
+
+                            }
+                        }
+                    });
+                }
+            }).start();
+        }
  //       if(socketfalg==1)
   //      {
   //          try {
@@ -131,9 +238,7 @@ public class SafeFragment extends BaseFragement {
         Bundle args=getArguments();
         cookie=args.getString("cookie");
 
-        executor = new ThreadPoolExecutor(30, 50, 500, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(10000));
-        // executor.prestartAllCoreThreads();
-        executor.allowCoreThreadTimeOut(true);
+
     }
     public String getmTag()
     {
@@ -145,7 +250,7 @@ public class SafeFragment extends BaseFragement {
         tempI = 0;
         nameCount = 0;
 
-        InputStream inputStream = socket.getInputStream();
+       inputStream = socket.getInputStream();
 
         while (true) {
 
@@ -167,7 +272,7 @@ public class SafeFragment extends BaseFragement {
             if (isHead == true)
 
                 if (isHead) {
-                    DataInputStream inputData = new DataInputStream(inputStream);
+                  DataInputStream  inputData = new DataInputStream(inputStream);
 
                     byte[] temp = new byte[4];
                     for (int i = 0; i < 4; i++) {
