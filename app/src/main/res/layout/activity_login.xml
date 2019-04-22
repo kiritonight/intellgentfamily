@@ -31,8 +31,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="64dp"
         android:hint="username"
-        android:textColor="@color/text_gray"
+        android:textColor="@color/blue"
         android:textColorHint="@color/text_gray"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +46,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="52dp"
         android:hint="password"
-        android:textColor="@color/text_gray"
+        android:textColor="@color/blue"
         android:textColorHint="@color/text_gray"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

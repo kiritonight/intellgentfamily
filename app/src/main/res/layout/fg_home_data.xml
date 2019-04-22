@@ -29,9 +29,9 @@
         <ImageView android:src="@drawable/ic_pm10" android:layout_width="120dp" android:layout_height="40dp"  android:clickable="true" />
 
 
-        <TextView android:text="PM2.5"     android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
-        <TextView android:text="PM1.0" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
-        <TextView android:text="PM10" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/pm25" android:text="PM2.5"   android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/pm1" android:text="PM1.0"  android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/pm10" android:text="PM10" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
 
 
         <TextView android:id="@+id/pm25_text" android:text="" android:gravity="center" android:textColor="@color/text_gray" android:layout_width="120dp"  />
@@ -56,9 +56,9 @@
         <ImageView android:src="@drawable/ic_co" android:layout_width="120dp" android:layout_height="40dp" android:clickable="true"/>
 
 
-        <TextView android:text="水灾"     android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
-        <TextView android:text="甲醛" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
-        <TextView android:text="CO" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/water" android:text="水灾"     android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/methanal" android:text="甲醛" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/co" android:text="CO" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
 
 
         <TextView android:id="@+id/water_text" android:text="" android:gravity="center" android:textColor="@color/text_gray" android:layout_width="120dp"  />
@@ -82,9 +82,9 @@
         <ImageView android:src="@drawable/ic_temp" android:layout_width="120dp" android:layout_height="40dp" android:clickable="true"/>
         <ImageView android:src="@drawable/ic_hum" android:layout_width="120dp" android:layout_height="40dp"  android:clickable="true"/>
 
-        <TextView android:text="空气质量"     android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
-        <TextView android:text="温度" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
-        <TextView android:text="湿度" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/air" android:text="空气质量"     android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/temp" android:text="温度" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/hum" android:text="湿度" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
 
 
         <TextView android:id="@+id/air_text" android:text="" android:gravity="center" android:textColor="@color/text_gray" android:layout_width="120dp"  />
@@ -108,9 +108,9 @@
         <ImageView android:src="@drawable/ic_light" android:layout_width="120dp" android:layout_height="40dp" android:clickable="true"/>
         <ImageView android:src="@drawable/ic_time" android:layout_width="120dp" android:layout_height="40dp" android:clickable="true"/>
 
-        <TextView android:text="火灾" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
-        <TextView android:text="光强" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
-        <TextView android:text="时间" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/fire" android:text="火灾" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView android:id="@+id/light" android:text="光强" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
+        <TextView  android:text="时间" android:textColor="@color/text_gray"  android:gravity="center" android:layout_width="120dp" android:layout_height="40dp"/>
 
         <TextView android:text="" android:id="@+id/fire_text" android:gravity="center" android:textColor="@color/text_gray" android:layout_width="120dp"/>
         <TextView android:text="" android:id="@+id/light_text" android:gravity="center" android:textColor="@color/text_gray" android:layout_width="120dp"/>
@@ -127,8 +127,9 @@
             android:layout_height="40dp"
             android:id="@+id/data_view"
             android:text="网页后台"
-            android:textColor="@color/bg_white"
+
             android:textColorHint="@color/text_yellow"
+
      />
 </LinearLayout>
 </LinearLayout>

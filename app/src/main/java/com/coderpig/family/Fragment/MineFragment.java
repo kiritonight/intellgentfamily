@@ -3,6 +3,8 @@ package com.coderpig.family.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +27,7 @@ public class MineFragment  extends BaseFragement {
     private TextView usernameText;
     private TextView loginText;
     private Button exitBtn;
+    private  Button aboutBtn;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -64,6 +67,13 @@ public class MineFragment  extends BaseFragement {
                         .show();
             }
         });
+        aboutBtn=(Button)mineFragmentView.findViewById(R.id.about_btn);
+        aboutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new AboutUsFramgment(),new AboutUsFramgment().getmTag());
+            }
+        });
         return mineFragmentView;
     }
 
@@ -81,4 +91,19 @@ public class MineFragment  extends BaseFragement {
         return mTag;
     }
 
+    private void replaceFragment(BaseFragement fragment,String tag)
+    {
+        Bundle bundle=new Bundle();
+
+        fragment.setArguments(bundle);
+
+        FragmentManager fm=getFragmentManager();
+
+        FragmentTransaction transaction=fm.beginTransaction();
+
+        transaction.replace(R.id.fl_main,fragment);
+        transaction.addToBackStack(tag);
+
+        transaction.commit();
+    }
 }

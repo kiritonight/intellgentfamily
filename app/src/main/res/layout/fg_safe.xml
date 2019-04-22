@@ -21,7 +21,8 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="显示"
-        android:textColor="@color/text_gray"
+        android:alpha="0.7"
+        android:background="@color/text_gray"
         android:layout_gravity="center"/>
 
 </LinearLayout>
